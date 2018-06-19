@@ -1,4 +1,71 @@
-body {
-  padding: 80px 100px;
-  background-color: #fff;
+/* body {
+  background-color:lightgrey;
+  margin:0;
+  padding: 0;
+  display: inline-block;
+  background-image: url(images/main_bg.png);
+  height: 100%;
+} */
+
+/* coursesview start */
+.row{
+  position: absolute;
 }
+
+.search {
+  height: 40px;
+  line-height: 40px;
+  margin: auto 30px;
+}
+.search input {
+  margin: auto 5px;
+}
+.search .text {
+margin: auto 30px;
+height: 20px;
+
+}
+/* coursesview end */
+
+
+
+/* coursecard start */
+.thumbnail {
+  margin: 10px auto;
+  border: 1px solid #000;
+}
+.thumbnail span {
+  margin: auto 10px;
+}
+.thumbnail h4 {
+  margin-left: 10px;
+}
+.action {
+  float: right;
+}
+.detail, .edit{
+  margin: auto 5px;
+}
+/* coursecard end */
+
+
+
+
+/* navbar start */
+.navbar.navbar-inverse{
+  background-image: url(images/main_bg.png);
+      /* flex: 0 0 200px; */
+      float: left;
+      width: 200px;
+      height:100%;
+      bottom: 0px;
+      position: relative;
+  
+  }
+  
+  .container{
+      float: left;
+      width: 200px;
+      border-right: 0;
+  }
+  /* narbar end */
