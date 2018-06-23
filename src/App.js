@@ -5,11 +5,11 @@ import Routes from './App/Routes';
 import TopNav from './App/TopNav';
 export default function App() {
 	return (
-		<div>
+		<div className='root'>
 			
 			<TopNav/>
 			
-			<main className="container">
+			<main>
 			<Routes/>
 			</main>
 		</div>	

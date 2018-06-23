@@ -23,8 +23,12 @@ export default () =>((
     </div>
 ));
 // const ProtectedRoute = ({component:ProtectedComponent, ...rest}) 
-//     <Route {...rest} render={props =>(
-//         Auth.loggedIn ? <ProtectedComponent {...props} />:
+//     <Route 
+//         {...rest} 
+//         render={props =>(
+//          Auth.loggedIn ? 
+//             <ProtectedComponent {...props} />
+    
 //             <Redirect to = {{
 //                 pathname:'/signin', state:{from: props.location}
 //             }}/>

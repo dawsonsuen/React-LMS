@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import CourseCard from './CourseCard';
 import axios from 'axios';
+import {fetchCourses} from '../api/course';
 import { Link } from 'react-router-dom';
 import CourseDetailView from './CourseDetailView';
 export default class CoursesView extends React.Component {
@@ -12,32 +13,42 @@ export default class CoursesView extends React.Component {
         };
     }
 
+    // loadCourses(){
+    //     this.setState({isLoading: true});
+    //     axios.get('/course').then(response =>{
+    //         console.log(response)
+
+    //             this.setState({
+    //                 courses: response.data,
+    //                 isLoading:false,
+    //             });
+    //         });
+    //         .catch(e=>console.log(e));
+    // }
+
+    
     componentDidMount() {
-        this.loadCourses();
+        // this.loadCourses();
+        fetchCourses()
+        .then(response => {
+            console.log(response);
+            this.setState({courses: response.data});
+        })
+        // .catch(e=>{
+        //     console.log('error fetching courses');
+        //     console.log(e);
+        //     alert('error fetching course')
+        // });
     }
-    loadCourses(){
-        this.setState({isLoading: true});
-        axios.get('/course/1').then(response =>{
-            console.log(response)
-
-                this.setState({
-                    courses:[response.data],
-                    isLoading:false,
-                });
-            });
-    }
-
-    
-    
 
 
     render() {
+        
         const {isLoading} = this.state; 
         if (isLoading)
-            return <span>Loading course</span>;
+            return <div className='loading'>Loading course</div>;
         return (
-            
-            <div className="row">
+            <div className='coursesview'>
                 <div className='search'>
                     Search By
                     <input type="radio" checked/>
@@ -45,14 +56,12 @@ export default class CoursesView extends React.Component {
                     <input type="radio"/>
                     Name
                     <input type="search" className='text'/>
-                    
-                
-                <hr></hr>
+                    <hr></hr>
                 </div>
-            {this.state.courses.map(course => <CourseCard course={course} key={course.Id}/>)}
-
+                <div className="row">
+                    {this.state.courses.map(course => <CourseCard course={course} key={course.id}/>)}
+                </div>
             </div>
-
         ) 
     }
 }    

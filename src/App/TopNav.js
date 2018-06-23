@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/topnav.css'
 
 export default class TopNav extends React.Component {
 
@@ -22,33 +21,38 @@ export default class TopNav extends React.Component {
             <span className="icon-bar" />
             <span className="icon-bar" />
           </button>
-          <Link to="/" className="navbar-brand">
-            <img src='./favicon.ico' style={{height:20}} alt="logo"/>
-          </Link>  
         </div>
-        <div id="navbar" className="navbar-collapse collapse">
+        
+        <div id="navbar">
           <ul className="nav navbar-nav">
+            <li>
+              <Link to="/">Home</Link> 
+            </li>
+            <br></br>
             <li>
               <Link to="/courses">Courses</Link>
             </li>
-            
+            <br></br>
+
             <li>
               <Link to="/students">Students</Link>
             </li>
-            
+            <br></br>
+
 
             <li>
               <Link to="/lecturers">Lecturers</Link>
             </li>
-          </ul>
-          {/* <ul className="nav navbar-nav navbar-right">
-            {auth.loggedIn ?
-              <DropDown/>:
+          
+          <br></br>
+
+            {/* {auth.loggedIn ?
+              <DropDown/>: */}
               <li>
                 <Link to="/signin">Sign in</Link>
               </li>
-            }
-          </ul> */}
+            {/* } */}
+          </ul>
         </div>
       </div> 
     </nav>
