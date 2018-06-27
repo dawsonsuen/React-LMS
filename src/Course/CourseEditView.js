@@ -1,34 +1,31 @@
 import React, {Component} from 'react';
-import axios from 'axios';
+import { fetchCourseById } from '../api/course';
 // import Button, {LoadingButton} from '../UI/Button';
 export default class CourseEditView extends Component {
     constructor(props){
         super(props);
         if (this._isNEW()) {
-            this.state={
-            course: {}};
+            this.state={course: {}};
         }
         else {
-            // let {course} = props.location.state;
-            let {course} =props.match.params;
-            this.state={course};
+            const {course} = props.location;
+
+            this.state={course:{}};
+
         }
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     _isNEW() {
-        const {id} = this.props.match.params;
-        return id==='NEW';
+        const {Id} = this.props.match.params;
+        return Id==='NEW';
     }
 
     handleInputChange(event) {
-        const {name: fieldName,value} = event.target;
-        this.setState({
-            course: {
-                ...this.state.course,
-                [fieldName]: value,
-            },
-        });
+        const {name,value} = event.target;
+        const course = {...this.state.course};
+        course[name]=value;
+        this.setState({course});
     }
     
     handleSubmit(event) {
@@ -40,23 +37,69 @@ export default class CourseEditView extends Component {
             alert('Detail Saved');
         },2000);
     }
-
-componentDidMount() {
-
-    const {id} =this.props.match
-    if ('NEW'=== this.props.match.params.id) {
-        this.setState({course:{}, isEditing: true})
-        return;
+    handleCancel(event){
+        this.props.history.push('/courses');
     }
-    // this.loadCourses(id)
+    componentDidMount() {
 
-}
+        const {Id} =this.props.match.params
+        if ('NEW'=== Id) {
+            this.setState({course:{}, isEditing: true})
+        return;
+        }
+
+        fetchCourseById(Id)
+        .then(response => {
+            this.setState({course:response.data});
+        })
+    }
+
     render() {
-      return (
-        <div className='course-edit'>
-        fsdfsfs
-          <h4>{this.props.match.params.Name}</h4>
-        </div>
-      )
+        const {course} = this.state;
+        const inputProps =(placeholder, attr, ...rest) =>({
+            placeholder,
+            name: attr,
+            value: course[attr] || '',
+            className: 'form-control',
+            onChange: this.handleInputChange.bind(this),
+
+        });
+            return (
+                
+                <div className='coursedetail'>
+                <div className='thumbnail'>
+                    <table border='1'>
+                    <tr>
+                        <th>Course Code</th>
+                        <th>Course Name</th>
+                    </tr>
+                    <tr>
+                        <td><input {...inputProps('CourseCode','CourseCode')}
+                            />
+                        </td>
+                        <td><input {...inputProps('Name','Name')}/></td>
+                    </tr>
+                    <tr>
+                        <th>Credit</th>
+                        <th>Max Number</th>
+                    </tr>
+                    <tr>
+                        <td>24</td>
+                        <td>90</td>
+                    </tr>
+                    <tr>
+                        <th colSpan="2">Description</th>
+                    </tr>
+                    <td colSpan="2">Math is science.</td>
+                    </table>
+                </div>
+                </div>
+            )
+            
+         
+        
+
+        
+    
     }
 }

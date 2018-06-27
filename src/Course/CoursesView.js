@@ -31,7 +31,6 @@ export default class CoursesView extends React.Component {
         // this.loadCourses();
         fetchCourses()
         .then(response => {
-            console.log(response);
             this.setState({courses: response.data});
         })
         // .catch(e=>{
@@ -59,7 +58,7 @@ export default class CoursesView extends React.Component {
                     <hr></hr>
                 </div>
                 <div className="row">
-                    {this.state.courses.map(course => <CourseCard course={course} key={course.id}/>)}
+                    {this.state.courses.map(course => <CourseCard course={course} key={course.Id}/>)}
                 </div>
             </div>
         ) 

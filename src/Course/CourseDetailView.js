@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import { fetchCourseById } from '../api/course';
+import CourseCard from './CourseCard';
+import CoursesView from './CoursesView';
 
 export default class CourseDetailView extends Component {
     constructor(props){
@@ -8,28 +10,52 @@ export default class CourseDetailView extends Component {
         this.state={
             isLoading: false,
             error: null,
-            course: null
+            course: {}
         };
+
     }
-    
+
     componentDidMount(){
 
-        const {id} = this.props.match.params;
+        const {Id} = this.props.match.params;
         this.setState({isLoading: true});
-        // fetchCourseById(id)
-        // .then(response => {
-        //     console.log(response);
-        //     this.setState({course: response.data});
-        // })
+        fetchCourseById(Id)
+        .then(response => {
+            this.setState({course: response.data});
+        })
     }
     render(){
-
+        const {Name, CourseCode} = this.state.course;
         return (
         <div className='coursedetail'>
-          <h4>{this.props.match.params.id.Name}</h4>
+                <div className='thumbnail'>
+                    <table border='1'>
+                    <tr>
+                        <th>Course Code</th>
+                        <th>Course Name</th>
+                    </tr>
+                    <tr>
+                        <td>{CourseCode}</td>
+                        <td>{Name}</td>
+                    </tr>
+                    <tr>
+                        <th>Credit</th>
+                        <th>Max Number</th>
+                    </tr>
+                    <tr>
+                        <td>24</td>
+                        <td>90</td>
+                    </tr>
+                    <tr>
+                        <th colSpan="2">Description</th>
+                    </tr>
+                    <td colSpan="2">Math is science.</td>
+                    </table>
+                </div>
         </div>
+        
         )    
-}
+    }
 }
 
 
