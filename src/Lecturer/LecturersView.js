@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
 import LecturerCard from './LecturerCard';
-import axios from 'axios';
 import {fetchLecturers} from '../api/lecturer';
 import { Link } from 'react-router-dom';
-import LecturerDetailView from './LecturerDetailView';
 export default class LecturersView extends React.Component {
     constructor(props) {
         super(props);
@@ -15,10 +13,8 @@ export default class LecturersView extends React.Component {
 
 
     componentDidMount() {
-        // this.loadCourses();
         fetchLecturers()
         .then(response => {
-            console.log(response);
             this.setState({lecturers: response.data});
         })
 
@@ -39,10 +35,13 @@ export default class LecturersView extends React.Component {
                     <input type="radio"/>
                     Name
                     <input type="search" className='text'/>
+                    <Link to = '/lecturers/edit/NEW' className='btn btn-lg btn-primary'>
+                    Add new Lecturer
+                    </Link>
                     <hr></hr>
                 </div>
                 <div className="row">
-                    {this.state.lecturers.map(lecturer => <LecturerCard lecturer={lecturer} key={lecturer.id}/>)}
+                    {this.state.lecturers.map(lecturer => <LecturerCard lecturer={lecturer} key={lecturer.Id}/>)}
                 </div>
             </div>
         ) 

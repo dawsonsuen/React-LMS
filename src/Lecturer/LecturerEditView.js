@@ -1,62 +1,116 @@
 import React, {Component} from 'react';
-import axios from 'axios';
-// import Button, {LoadingButton} from '../UI/Button';
+import { fetchLecturerById, saveLecturer, undateLecturer } from '../api/lecturer';
+import Button, {LoadingButton} from '../UI/Button';
 export default class LecturerEditView extends Component {
     constructor(props){
         super(props);
         if (this._isNEW()) {
-            this.state={
-            course: {}};
+            this.state={lecturer: {}};
         }
         else {
-            // let {course} = props.location.state;
-            let {course} =props.match.params;
-            this.state={course};
+            const {lecturer} = props.location;
+            this.state={lecturer:{}};
         }
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     _isNEW() {
-        const {id} = this.props.match.params;
-        return id==='NEW';
+        const {Id} = this.props.match.params;
+        return Id==='NEW';
     }
 
     handleInputChange(event) {
-        const {name: fieldName,value} = event.target;
-        this.setState({
-            course: {
-                ...this.state.course,
-                [fieldName]: value,
-            },
-        });
+        const {name,value} = event.target;
+        const lecturer = {...this.state.lecturer};
+        lecturer[name]=value;
+        this.setState({lecturer});
     }
     
     handleSubmit(event) {
         event.preventDefault();
         this.setState({isSaving:true});
-        const {course} = this.state;
+        const {Id} = this.state.lecturer;
+        const data = this.state.lecturer;
+        if (this._isNEW()) {
+            saveLecturer(data)
+            .then(response => {
+                this.setState({lecturer: response.data});
+            })
+        } else {
+            undateLecturer(Id,data)
+            .then(response => {
+                this.setState({lecturer:response.data});
+            })
+        }
+        
+        
         setTimeout(()=>{
             this.setState({isSaving:false});
             alert('Detail Saved');
         },2000);
     }
 
+    handleCancel(event){
+        this.props.history.push('/lecturers');
+    }
+
 componentDidMount() {
 
-    const {id} =this.props.match
-    if ('NEW'=== this.props.match.params.id) {
-        this.setState({course:{}, isEditing: true})
+    const {Id} =this.props.match.params
+        if ('NEW'=== Id) {
+            this.setState({lecturer:{}, isEditing: true})
         return;
-    }
-    // this.loadCourses(id)
+        }
 
+        fetchLecturerById(Id)
+        .then(response => {
+            this.setState({lecturer:response.data});
+        })
 }
-    render() {
-      return (
-        <div className='course-edit'>
-        fsdfsfs
-          <h4>{this.props.match.params.Name}</h4>
-        </div>
-      )
+render() {
+    const {lecturer} = this.state;
+    const inputProps =(placeholder, attr, ...rest) =>({
+        placeholder,
+        name: attr,
+        value: lecturer[attr] || '',
+        className: 'form-control',
+        onChange: this.handleInputChange.bind(this),
+
+    });
+        return (
+            
+            <form className='coursedetail' onSubmit={this.handleSubmit}>
+            <div className='thumbnail'>
+            
+                <table border='1'>
+                <tr>
+                    <th>LecturerId</th>
+                    <th>Name</th>
+                </tr>
+                <tr>
+                    <td><input {...inputProps('Id','Id')}/>
+                    </td>
+                    <td><input {...inputProps('Name','Name')}/></td>
+                </tr>
+                <tr>
+                    <th>Payroll</th>
+                    <th>Feedback</th>
+                </tr>
+                <tr>
+                    <td><input {...inputProps('Payroll','Payroll')}/></td>
+                    <td><input {...inputProps('Feedback','Feedback')}/></td>
+                </tr>
+                
+                {/* <tr>
+                    <th colSpan="2">Description</th>
+                </tr>
+                <td colSpan="2">Math is science.</td> */}
+                </table>
+                <Button>Save</Button> 
+                
+            </div>
+            
+            </form>
+        )
     }
 }

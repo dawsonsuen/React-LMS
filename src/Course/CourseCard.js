@@ -19,7 +19,6 @@ export default function CourseCard(props) {
             
               <Link to={`/courses/${Id}`} className="btn detail">Detail</Link>
               <Link to={`/courses/edit/${Id}`} className='btn edit'>Edit</Link>
-              <Link to='/courses/edit/NEW' className="btn add">Add</Link>
         </div>
         
 

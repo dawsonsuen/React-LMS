@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom';
 import './styles';
 import App from './App';
-axios.defaults.baseURL = 'http://lmsdemomar.azurewebsites.net/api';
+axios.defaults.baseURL = 'http://dawsonreactlms.azurewebsites.net/api';
 
 ReactDOM.render(
 	<Router>

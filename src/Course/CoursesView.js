@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import CourseCard from './CourseCard';
-import axios from 'axios';
 import {fetchCourses} from '../api/course';
 import { Link } from 'react-router-dom';
-import CourseDetailView from './CourseDetailView';
+import Button, {LoadingButton} from '../UI/Button';
+
 export default class CoursesView extends React.Component {
     constructor(props) {
         super(props);
@@ -13,22 +13,9 @@ export default class CoursesView extends React.Component {
         };
     }
 
-    // loadCourses(){
-    //     this.setState({isLoading: true});
-    //     axios.get('/course').then(response =>{
-    //         console.log(response)
-
-    //             this.setState({
-    //                 courses: response.data,
-    //                 isLoading:false,
-    //             });
-    //         });
-    //         .catch(e=>console.log(e));
-    // }
-
+    
     
     componentDidMount() {
-        // this.loadCourses();
         fetchCourses()
         .then(response => {
             this.setState({courses: response.data});
@@ -55,11 +42,18 @@ export default class CoursesView extends React.Component {
                     <input type="radio"/>
                     Name
                     <input type="search" className='text'/>
+                    <Link to = '/courses/edit/NEW' className='btn btn-lg btn-primary'>
+                    Add new Course
+                    </Link>
                     <hr></hr>
+                    
                 </div>
+                
+                
                 <div className="row">
                     {this.state.courses.map(course => <CourseCard course={course} key={course.Id}/>)}
                 </div>
+                
             </div>
         ) 
     }

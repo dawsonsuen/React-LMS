@@ -4,14 +4,14 @@ export function fetchLecturers() {
     return axios.get('/lecturer');
 }
 
-export function fetchLecturerById(id) {
-    return axios.get(`/lecturer/${id}`);
+export function fetchLecturerById(Id) {
+    return axios.get(`/lecturer/${Id}`);
 }
 
 export function saveLecturer(data) {
     return axios.post('/lecturer',data);
 }
 
-export function undateLecturer(id,data) {
-    return axios.put(`/lecturer/${id}`, data);
+export function undateLecturer(Id,data) {
+    return axios.put(`/lecturer/${Id}`, data);
 }

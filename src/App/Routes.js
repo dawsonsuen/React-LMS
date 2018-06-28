@@ -17,8 +17,8 @@ export default () =>((
         <Route exact path="/courses/:Id" component={CourseDetailView}/>
         <Route exact path="/courses/edit/:Id" component={CourseEditView}/>
         <Route exact path="/lecturers" component={LecturersView}/>
-        <Route exact path="/lecturers/:id" component={LecturerDetailView}/>
-        <Route exact path="/lecturers/edit/:id" component={LecturerEditView}/>
+        <Route exact path="/lecturers/:Id" component={LecturerDetailView}/>
+        <Route exact path="/lecturers/edit/:Id" component={LecturerEditView}/>
 
         {/* <Route exact path="/students" component={StudentsView}/> */}
         {/* <ProtectedRoute exact path="/students/:id" component={StudentDetailView}/>

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import { fetchCourseById } from '../api/course';
-// import Button, {LoadingButton} from '../UI/Button';
+import { fetchCourseById, saveCourse, undateCourse } from '../api/course';
+import Button, {LoadingButton} from '../UI/Button';
 export default class CourseEditView extends Component {
     constructor(props){
         super(props);
@@ -15,6 +15,7 @@ export default class CourseEditView extends Component {
         }
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+    
 
     _isNEW() {
         const {Id} = this.props.match.params;
@@ -31,7 +32,21 @@ export default class CourseEditView extends Component {
     handleSubmit(event) {
         event.preventDefault();
         this.setState({isSaving:true});
-        const {course} = this.state;
+        const {Id} = this.state.course;
+        const data = this.state.course;
+        if (this._isNEW()) {
+            saveCourse(data)
+            .then(response => {
+                this.setState({course: response.data});
+            })
+        } else {
+            undateCourse(Id,data)
+            .then(response => {
+                this.setState({course:response.data});
+            })
+        }
+        
+        
         setTimeout(()=>{
             this.setState({isSaving:false});
             alert('Detail Saved');
@@ -66,16 +81,16 @@ export default class CourseEditView extends Component {
         });
             return (
                 
-                <div className='coursedetail'>
+                <form className='coursedetail' onSubmit={this.handleSubmit}>
                 <div className='thumbnail'>
+                
                     <table border='1'>
                     <tr>
                         <th>Course Code</th>
                         <th>Course Name</th>
                     </tr>
                     <tr>
-                        <td><input {...inputProps('CourseCode','CourseCode')}
-                            />
+                        <td><input {...inputProps('CourseCode','CourseCode')}/>
                         </td>
                         <td><input {...inputProps('Name','Name')}/></td>
                     </tr>
@@ -84,16 +99,35 @@ export default class CourseEditView extends Component {
                         <th>Max Number</th>
                     </tr>
                     <tr>
-                        <td>24</td>
-                        <td>90</td>
+                        <td><input {...inputProps('Credit','Credit')}/></td>
+                        <td><input {...inputProps('MaxNumber','MaxNumber')}/></td>
                     </tr>
-                    <tr>
+                    
+                    {/* <tr>
                         <th colSpan="2">Description</th>
                     </tr>
-                    <td colSpan="2">Math is science.</td>
+                    <td colSpan="2">Math is science.</td> */}
                     </table>
+                    <Button>Save</Button> 
+                    
                 </div>
-                </div>
+                
+                </form>
+
+
+                // <form>
+                //     <div className='coursedetail'>
+                //         <label>
+                //             Code
+                //         </label>
+                //         <input
+                //             className='form-control'
+                //             name='CourseCode'
+                //             value={course.CousreCode || ''}
+                //             onChange = {this.handleInputChange.bind(this)}
+                //         />
+                //     </div>
+                // </form>
             )
             
          
