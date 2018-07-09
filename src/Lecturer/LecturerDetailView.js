@@ -27,7 +27,7 @@ export default class LecturerDetailView extends Component {
         return (
         <div className='coursedetail'>
                 <div className='thumbnail'>
-                    <table border='1'>
+                    <table border='1' className="table-striped table-bordered">
                     <tr>
                         <th>LecturerId</th>
                         <th>Name</th>

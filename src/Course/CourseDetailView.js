@@ -25,30 +25,32 @@ export default class CourseDetailView extends Component {
         const {Name, CourseCode, Credit, MaxNumber} = this.state.course;
         return (
         <div className='coursedetail'>
-                <div className='thumbnail'>
-                    <table border='1'>
+                    <table border='1' className="table-striped table-bordered">
                     <tr>
                         <th>Course Code</th>
                         <th>Course Name</th>
                     </tr>
+                    <tbody>
                     <tr>
                         <td>{CourseCode}</td>
                         <td>{Name}</td>
                     </tr>
+                    </tbody>
                     <tr>
                         <th>Credit</th>
                         <th>Max Number</th>
                     </tr>
+                    <tbody>
                     <tr>
                         <td>{Credit}</td>
                         <td>{MaxNumber}</td>
                     </tr>
+                    </tbody>
                     {/* <tr>
                         <th colSpan="2">Description</th>
                     </tr>
                     <td colSpan="2">Math is science.</td> */}
                     </table>
-                </div>
         </div>
         
         )    

@@ -23,10 +23,10 @@ export default class TopNav extends React.Component {
           </button>
         </div>
         
-        <div id="navbar">
-          <ul className="nav navbar-nav">
-            <li>
-              <Link to="/">Home</Link> 
+        <div id="navbar" className="navbar-collapse collapse">
+          <ul className="nav navbar-nav" >
+            <li className="nav-item">
+              <Link to="/" >Home</Link> 
             </li>
             <br></br>
             <li>

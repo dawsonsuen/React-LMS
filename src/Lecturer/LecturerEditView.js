@@ -80,7 +80,6 @@ render() {
         return (
             
             <form className='coursedetail' onSubmit={this.handleSubmit}>
-            <div className='thumbnail'>
             
                 <table border='1'>
                 <tr>
@@ -108,7 +107,6 @@ render() {
                 </table>
                 <Button>Save</Button> 
                 
-            </div>
             
             </form>
         )

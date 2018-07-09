@@ -80,54 +80,43 @@ export default class CourseEditView extends Component {
 
         });
             return (
-                
+            
                 <form className='coursedetail' onSubmit={this.handleSubmit}>
                 <div className='thumbnail'>
                 
-                    <table border='1'>
+                    <table border='1' className="table-striped table-bordered">
                     <tr>
                         <th>Course Code</th>
                         <th>Course Name</th>
                     </tr>
+                    <tbody>
                     <tr>
                         <td><input {...inputProps('CourseCode','CourseCode')}/>
                         </td>
                         <td><input {...inputProps('Name','Name')}/></td>
                     </tr>
+                    </tbody>
                     <tr>
                         <th>Credit</th>
                         <th>Max Number</th>
                     </tr>
+                    <tbody>
                     <tr>
                         <td><input {...inputProps('Credit','Credit')}/></td>
                         <td><input {...inputProps('MaxNumber','MaxNumber')}/></td>
                     </tr>
-                    
+                    </tbody>
                     {/* <tr>
                         <th colSpan="2">Description</th>
                     </tr>
                     <td colSpan="2">Math is science.</td> */}
                     </table>
-                    <Button>Save</Button> 
-                    
+                    <Button>Save</Button>
                 </div>
                 
                 </form>
-
-
-                // <form>
-                //     <div className='coursedetail'>
-                //         <label>
-                //             Code
-                //         </label>
-                //         <input
-                //             className='form-control'
-                //             name='CourseCode'
-                //             value={course.CousreCode || ''}
-                //             onChange = {this.handleInputChange.bind(this)}
-                //         />
-                //     </div>
-                // </form>
+                
+               
             )
             
          

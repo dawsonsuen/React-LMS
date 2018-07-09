@@ -41,8 +41,9 @@ export default class CoursesView extends React.Component {
                     CourseCode
                     <input type="radio"/>
                     Name
-                    <input type="search" className='text'/>
-                    <Link to = '/courses/edit/NEW' className='btn btn-lg btn-primary'>
+                    <input type="search" className='text' className="glyphicon glyphicon-search"/>
+                    <span className="glyphicon glyphicon-search"></span>
+                    <Link to = '/courses/edit/NEW' className='btn btn-sm btn-primary' style={{margin:'10px'}}>
                     Add new Course
                     </Link>
                     <hr></hr>
