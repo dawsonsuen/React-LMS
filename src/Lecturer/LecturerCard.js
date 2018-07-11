@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import LecturerDetailView from './LecturerDetailView';
+import axios from 'axios';
 
 
 export default function LecturerCard(props) {
@@ -20,6 +20,8 @@ export default function LecturerCard(props) {
             
               <Link to={`/lecturers/${Id}`} className="btn detail glyphicon glyphicon-info-sign"></Link>
               <Link to={`/lecturers/edit/${Id}`} className='btn edit glyphicon glyphicon-pencil'></Link>
+              <Link to="/lecturers" className='btn delete glyphicon glyphicon-trash' onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) axios.delete(`/lecturer/${Id}`) } } />
+
         </div>
         
 

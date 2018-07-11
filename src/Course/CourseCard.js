@@ -1,7 +1,6 @@
-import React, {Component, Children} from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import CourseDetailView from './CourseDetailView';
-
+import axios from 'axios';
 
 export default function CourseCard(props) {
     
@@ -22,10 +21,10 @@ export default function CourseCard(props) {
           
         <div className='action'>
 
-              <Link to={`/courses/${Id}`} className="btn detail glyphicon glyphicon-info-sign"></Link>
-              <Link to={`/courses/edit/${Id}`} className='btn edit glyphicon glyphicon-pencil'></Link>
-              <Link to={`/courses/delete/${Id}`} className='btn delete glyphicon glyphicon-trash'></Link>
-  
+              <Link to={`/courses/${Id}`} className="btn detail glyphicon glyphicon-info-sign"/>
+              <Link to={`/courses/edit/${Id}`} className='btn edit glyphicon glyphicon-pencil'/>
+              <Link to="/courses" className='btn delete glyphicon glyphicon-trash' onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) axios.delete(`/course/${Id}`) } } />
+
         </div>
         
 

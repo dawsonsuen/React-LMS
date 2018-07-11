@@ -4,7 +4,6 @@ import Auth from '../utils/Auth';
 import CoursesView from '../Course/CoursesView';
 import CourseDetailView from'../Course/CourseDetailView';
 import CourseEditView from'../Course/CourseEditView';
-import CourseDelete from '../Course/CourseDelete';
 import LecturersView from '../Lecturer/LecturersView';
 import LecturerDetailView from'../Lecturer/LecturerDetailView';
 import LecturerEditView from '../Lecturer/LecturerEditView';
@@ -18,8 +17,6 @@ export default () =>(
         <Route exact path="/courses" component={CoursesView}/>
         <Route exact path="/courses/:Id" component={CourseDetailView}/>
         <Route exact path="/courses/edit/:Id" component={CourseEditView}/>
-        <Route exact path="/courses/delete/:Id" component={CourseDelete
-        }/>
 
         <Route exact path="/lecturers" component={LecturersView}/>
         <Route exact path="/lecturers/:Id" component={LecturerDetailView}/>

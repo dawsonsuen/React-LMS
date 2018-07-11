@@ -15,3 +15,7 @@ export function saveCourse(data) {
 export function undateCourse(Id,data) {
     return axios.put(`/course/${Id}`, data);
 }
+
+export function deleteCourse(Id) {
+    return axios.delete(`/course/${Id}`);
+}

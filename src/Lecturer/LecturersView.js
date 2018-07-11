@@ -35,7 +35,7 @@ export default class LecturersView extends React.Component {
                     <input type="radio"/>
                     Name
                     <input type="search" className='text'/>
-                    <Link to = '/lecturers/edit/NEW' className='btn btn-lg btn-primary'>
+                    <Link to = '/lecturers/edit/NEW' className='btn btn-sm btn-primary'>
                     Add new Lecturer
                     </Link>
                     <hr></hr>
