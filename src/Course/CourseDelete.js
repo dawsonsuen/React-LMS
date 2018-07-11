@@ -3,7 +3,9 @@ export default class CourseDelete extends Component {
     constructor(props){
         super(props);
     }
-    deletePost(id){
+    handleDelete(event){
+        const {Id} =this.props.match.params
+
         if(('Are you sure ?')){
           // Delete Post API call will be here !!
         }

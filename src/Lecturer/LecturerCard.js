@@ -18,8 +18,8 @@ export default function LecturerCard(props) {
           
         <div className='action'>
             
-              <Link to={`/lecturers/${Id}`} className="btn detail">Detail</Link>
-              <Link to={`/lecturers/edit/${Id}`} className='btn edit'>Edit</Link>
+              <Link to={`/lecturers/${Id}`} className="btn detail glyphicon glyphicon-info-sign"></Link>
+              <Link to={`/lecturers/edit/${Id}`} className='btn edit glyphicon glyphicon-pencil'></Link>
         </div>
         
 
