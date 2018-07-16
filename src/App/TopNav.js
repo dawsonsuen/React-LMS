@@ -6,9 +6,9 @@ export default class TopNav extends React.Component {
   render() {
   return (
     <nav className="navbar navbar-inverse">
-      <div className="container">
-        <div className="navbar-header">
-          <button
+      <div className="navbar-header">
+            LMS
+          {/* <button
             type="button"
             className="navbar-toggle collapsed"
             data-toggle="collapse"
@@ -20,28 +20,32 @@ export default class TopNav extends React.Component {
             <span className="icon-bar" />
             <span className="icon-bar" />
             <span className="icon-bar" />
-          </button>
+          </button> */}
         </div>
+      
+      <div className="container">
+        
         
         <div id="navbar" className="navbar-collapse collapse">
+
           <ul className="nav navbar-nav" >
             <li className="nav-item">
               <Link to="/" >Home</Link> 
             </li>
             <br></br>
             <li>
-              <Link to="/courses">Courses</Link>
+              <Link to="/courses">Course Management</Link>
             </li>
             <br></br>
 
             <li>
-              <Link to="/students">Students</Link>
+              <Link to="/students">Student Management</Link>
             </li>
             <br></br>
 
 
             <li>
-              <Link to="/lecturers">Lecturers</Link>
+              <Link to="/lecturers">Lecturer Management</Link>
             </li>
           
           <br></br>

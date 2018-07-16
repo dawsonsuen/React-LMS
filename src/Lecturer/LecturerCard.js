@@ -13,16 +13,16 @@ export default function LecturerCard(props) {
             <h4 >{Name}</h4>
             <span>Payroll: {Payroll}</span>|
             <span>Feedback: {Feedback}</span>|
+            <div className='action'>
+            
+            <Link to={`/lecturers/${Id}`} className="btn detail glyphicon glyphicon-info-sign"></Link>
+            <Link to={`/lecturers/edit/${Id}`} className='btn edit glyphicon glyphicon-pencil'></Link>
+            <Link to="/lecturers" className='btn delete glyphicon glyphicon-trash' onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) axios.delete(`/lecturer/${Id}`) } } />
 
+      </div>
         </div>
           
-        <div className='action'>
-            
-              <Link to={`/lecturers/${Id}`} className="btn detail glyphicon glyphicon-info-sign"></Link>
-              <Link to={`/lecturers/edit/${Id}`} className='btn edit glyphicon glyphicon-pencil'></Link>
-              <Link to="/lecturers" className='btn delete glyphicon glyphicon-trash' onClick={() => { if (window.confirm('Are you sure you wish to delete this item?')) axios.delete(`/lecturer/${Id}`) } } />
-
-        </div>
+        
         
 
     </div>

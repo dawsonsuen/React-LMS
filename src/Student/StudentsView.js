@@ -30,7 +30,7 @@ export default class StudentsView extends React.Component {
         if (isLoading)
             return <div className='loading'>Loading student</div>;
         return (
-            <div className='coursesview'>
+            <div className='view'>
                 <div className='search'>
                     Search By
                     <input type="radio" checked/>

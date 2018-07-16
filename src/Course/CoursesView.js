@@ -32,9 +32,13 @@ export default class CoursesView extends React.Component {
         
         const {isLoading} = this.state; 
         if (isLoading)
-            return <div className='loading'>Loading course</div>;
+
+            return (<div className='loading'>Loading course</div>)
+    
+
         return (
-            <div className='coursesview'>
+            
+            <div className='view'>
                 <div className='search'>
                     Search By
                     <input type="radio" checked/>
@@ -42,16 +46,16 @@ export default class CoursesView extends React.Component {
                     <input type="radio"/>
                     Name
                     <input type="search" className='text' className="glyphicon glyphicon-search"/>
-                    <span className="glyphicon glyphicon-search"></span>
+                    <button className="glyphicon glyphicon-search"></button>
                     <Link to = '/courses/edit/NEW' className='btn btn-sm btn-primary' style={{margin:'10px'}}>
                     Add new Course
                     </Link>
                     <hr></hr>
-                    
                 </div>
                 
                 
                 <div className="row">
+                
                     {this.state.courses.map(course => <CourseCard course={course} key={course.Id}/>)}
                 </div>
                 
