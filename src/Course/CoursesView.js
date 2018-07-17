@@ -40,14 +40,14 @@ export default class CoursesView extends React.Component {
             
             <div className='view'>
                 <div className='search'>
-                    Search By
+                    {/* Search By
                     <input type="radio" checked/>
                     CourseCode
                     <input type="radio"/>
                     Name
                     <input type="search" className='text' className="glyphicon glyphicon-search"/>
-                    <button className="glyphicon glyphicon-search"></button>
-                    <Link to = '/courses/edit/NEW' className='btn btn-sm btn-primary' style={{margin:'10px'}}>
+                    <button className="glyphicon glyphicon-search"></button> */}
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Link to = '/courses/edit/NEW' className='btn btn-sm btn-primary' style={{margin:'10px'}}>
                     Add new Course
                     </Link>
                     <hr></hr>
