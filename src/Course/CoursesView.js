@@ -2,23 +2,25 @@ import React, {Component} from 'react';
 import CourseCard from './CourseCard';
 import {fetchCourses} from '../api/course';
 import { Link } from 'react-router-dom';
-import { Layout,Breadcrumb, Icon } from 'antd';
+import { Layout,Breadcrumb, Icon,Spin } from 'antd';
 
 export default class CoursesView extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLoading: false,
-            courses: [],
+            isLoading:true,
+            courses: []
         };
     }
 
     
     
     componentDidMount() {
+        this.setState({isLoading:true});
         fetchCourses()
         .then(response => {
             this.setState({courses: response.data});
+            this.setState({isLoading:false});
         })
         .catch(e=>{
             console.log('error fetching courses');
@@ -34,8 +36,10 @@ export default class CoursesView extends React.Component {
         const {isLoading} = this.state; 
         if (isLoading)
 
-            return (<div className='loading'>Loading course</div>)
-    
+            // return (<div className='loading'>Loading course</div>)
+    return (<div><Spin size="small" />
+    <Spin />
+    <Spin size="large" /></div>)
 
         return (
             <Layout style={{ padding: '0 24px 24px'}}>

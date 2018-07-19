@@ -2,13 +2,13 @@ import React, {Component} from 'react';
 import StudentCard from './StudentCard';
 import {fetchStudents} from '../api/student';
 import { Link } from 'react-router-dom';
-import { Layout,Breadcrumb, Icon } from 'antd';
+import { Layout,Breadcrumb, Icon, Spin } from 'antd';
 
 export default class StudentsView extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLoading: false,
+            isLoading: true,
             students: [],
         };
     }
@@ -19,6 +19,7 @@ export default class StudentsView extends React.Component {
         fetchStudents()
         .then(response => {
             this.setState({students: response.data});
+            this.setState({isLoading: false});
         })
         
     }
@@ -29,7 +30,9 @@ export default class StudentsView extends React.Component {
 
         const {isLoading} = this.state; 
         if (isLoading)
-            return <div className='loading'>Loading student</div>;
+            return <div><Spin size="small" />
+            <Spin />
+            <Spin size="large" /></div>;
         return (
             <Layout style={{ padding: '0 24px 24px'}}>
                 <Breadcrumb style={{ margin: '16px 0' }}>

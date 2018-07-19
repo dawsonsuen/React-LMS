@@ -2,13 +2,13 @@ import React, {Component} from 'react';
 import LecturerCard from './LecturerCard';
 import {fetchLecturers} from '../api/lecturer';
 import { Link } from 'react-router-dom';
-import { Layout,Breadcrumb, Icon } from 'antd';
+import { Layout,Breadcrumb, Icon, Spin } from 'antd';
 
 export default class LecturersView extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLoading: false,
+            isLoading: true,
             lecturers: [],
         };
     }
@@ -18,6 +18,8 @@ export default class LecturersView extends React.Component {
         fetchLecturers()
         .then(response => {
             this.setState({lecturers: response.data});
+            this.setState({isLoading:false});
+
         })
 
     }
@@ -28,7 +30,9 @@ export default class LecturersView extends React.Component {
 
         const {isLoading} = this.state; 
         if (isLoading)
-            return <div className='loading'>Loading lecturer</div>;
+            return <div><Spin size="small" />
+            <Spin />
+            <Spin size="large" /></div>;
         return (
             <Layout style={{ padding: '0 24px 24px'}}>
         <Breadcrumb style={{ margin: '16px 0' }}>
