@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import StudentCard from './StudentCard';
 import {fetchStudents} from '../api/student';
 import { Link } from 'react-router-dom';
-import Button, {LoadingButton} from '../UI/Button';
+import { Layout,Breadcrumb, Icon } from 'antd';
 
 export default class StudentsView extends React.Component {
     constructor(props) {
@@ -25,33 +25,25 @@ export default class StudentsView extends React.Component {
 
 
     render() {
-        
+        const { Header, Content, Footer, Sider } = Layout;
+
         const {isLoading} = this.state; 
         if (isLoading)
             return <div className='loading'>Loading student</div>;
         return (
-            <div className='view'>
-                <div className='search'>
-                    Search By
-                    <input type="radio" checked/>
-                    StudentId
-                    <input type="radio"/>
-                    Name
-                    <input type="search" className='text' className="glyphicon glyphicon-search"/>
-                    <span className="glyphicon glyphicon-search"></span>
-                    <Link to = '/students/edit/NEW' className='btn btn-sm btn-primary' style={{margin:'10px'}}>
-                    Add new student
+            <Layout style={{ padding: '0 24px 24px'}}>
+                <Breadcrumb style={{ margin: '16px 0' }}>
+                    <Breadcrumb.Item>Student</Breadcrumb.Item>
+                    <Link to = '/students/edit/NEW' className='btn btn-sm btn-primary' style={{margin:'10px',color:'white'}}>
+                        Add new Student
                     </Link>
-                    <hr></hr>
                     
-                </div>
-                
-                
-                <div className="row">
+                </Breadcrumb>
+        
+                <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
                     {this.state.students.map(student => <StudentCard student={student} key={student.Id}/>)}
-                </div>
-                
-            </div>
+                </Content>
+            </Layout>
         ) 
     }
 }    

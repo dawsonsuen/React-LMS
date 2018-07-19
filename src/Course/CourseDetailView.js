@@ -22,6 +22,7 @@ export default class CourseDetailView extends Component {
         })
     }
     render(){
+        
         const {Name, CourseCode, Credit, MaxNumber} = this.state.course;
         return (
         <div className='coursedetail'>

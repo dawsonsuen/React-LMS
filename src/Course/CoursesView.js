@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import CourseCard from './CourseCard';
 import {fetchCourses} from '../api/course';
 import { Link } from 'react-router-dom';
-import Button, {LoadingButton} from '../UI/Button';
+import { Layout,Breadcrumb, Icon } from 'antd';
 
 export default class CoursesView extends React.Component {
     constructor(props) {
@@ -20,16 +20,17 @@ export default class CoursesView extends React.Component {
         .then(response => {
             this.setState({courses: response.data});
         })
-        // .catch(e=>{
-        //     console.log('error fetching courses');
-        //     console.log(e);
-        //     alert('error fetching course')
-        // });
+        .catch(e=>{
+            console.log('error fetching courses');
+            console.log(e);
+            alert('error fetching course')
+        });
     }
 
 
     render() {
-        
+        const { Header, Content, Footer, Sider } = Layout;
+
         const {isLoading} = this.state; 
         if (isLoading)
 
@@ -37,29 +38,19 @@ export default class CoursesView extends React.Component {
     
 
         return (
-            
-            <div className='view'>
-                <div className='search'>
-                    {/* Search By
-                    <input type="radio" checked/>
-                    CourseCode
-                    <input type="radio"/>
-                    Name
-                    <input type="search" className='text' className="glyphicon glyphicon-search"/>
-                    <button className="glyphicon glyphicon-search"></button> */}
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Link to = '/courses/edit/NEW' className='btn btn-sm btn-primary' style={{margin:'10px'}}>
-                    Add new Course
+            <Layout style={{ padding: '0 24px 24px'}}>
+                <Breadcrumb style={{ margin: '16px 0' }}>
+                    <Breadcrumb.Item>Course</Breadcrumb.Item>
+                    <Link to = '/courses/edit/NEW' className='btn btn-sm btn-primary' style={{margin:'10px',color:'white'}}>
+                        Add new Course
                     </Link>
-                    <hr></hr>
-                </div>
-                
-                
-                <div className="row">
-                
+                    
+                </Breadcrumb>
+        
+                <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
                     {this.state.courses.map(course => <CourseCard course={course} key={course.Id}/>)}
-                </div>
-                
-            </div>
+                </Content>
+            </Layout>
         ) 
     }
 }    

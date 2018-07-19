@@ -80,9 +80,7 @@ export default class CourseEditView extends Component {
 
         });
             return (
-            
-                <form className='coursedetail' onSubmit={this.handleSubmit}>
-                <div className='thumbnail'>
+                <form className='courseedit' onSubmit={this.handleSubmit}>
                 
                     <table border='1' className="table-striped table-bordered">
                     <tr>
@@ -112,10 +110,8 @@ export default class CourseEditView extends Component {
                     <td colSpan="2">Math is science.</td> */}
                     </table>
                     <Button>Save</Button>
-                </div>
                 
                 </form>
-                
                
             )
             

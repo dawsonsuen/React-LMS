@@ -1,10 +1,14 @@
- /* body {
+@import '~antd/dist/antd.css';
+
+ body {
   margin:0;
   padding: 0;
   display: inline-block;
-} */
-
-body, html, .root {
+}
+.root {
+  height: 100%;
+}
+.ant-layout-has-sider {
   height: 100%;
 }
 /* navbar start */
@@ -104,14 +108,25 @@ height: 20px;
 /* coursedetail start */
 .coursedetail {
   text-align: center;
-  margin-left: 200px;
+  /* margin-left: 200px; */
   padding-top: 15%;
 }
-table {
-  width:60%;
-  /* margin-top: 10%; */
-  margin-left: 20%;
+.coursedetail table {
+  margin-top: 60%;
+  width: 200%;
+  margin-left: 150%;
   line-height: 30px;
+}
+
+.courseedit {
+  margin-top: 30%;
+  width: 150%;
+  margin-left: 80%;
+  line-height: 30px;
+}
+
+.courseedit Button {
+  margin-left: 28%
 }
 th {
   text-align: center;
@@ -125,3 +140,14 @@ th {
 }
 /* courseedit end */
 
+.logo {
+  width: 120px;
+  height: 31px;
+  background: rgba(255,255,255,.2);  
+  margin: 16px 28px 16px 0;
+  float: left;
+}
+.form-signin {
+  margin-left: 100%;
+  margin-top: 20%
+}

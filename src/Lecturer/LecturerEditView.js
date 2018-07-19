@@ -79,27 +79,30 @@ render() {
     });
         return (
             
-            <form className='coursedetail' onSubmit={this.handleSubmit}>
+            <form className='courseedit' onSubmit={this.handleSubmit}>
             
-                <table border='1'>
+                <table border='1' className="table-striped table-bordered">
                 <tr>
                     <th>LecturerId</th>
                     <th>Name</th>
                 </tr>
+                <tbody>
                 <tr>
                     <td><input {...inputProps('Id','Id')}/>
                     </td>
                     <td><input {...inputProps('Name','Name')}/></td>
                 </tr>
+                </tbody>
                 <tr>
                     <th>Payroll</th>
                     <th>Feedback</th>
                 </tr>
+                <tbody>
                 <tr>
                     <td><input {...inputProps('Payroll','Payroll')}/></td>
                     <td><input {...inputProps('Feedback','Feedback')}/></td>
                 </tr>
-                
+                </tbody>
                 {/* <tr>
                     <th colSpan="2">Description</th>
                 </tr>

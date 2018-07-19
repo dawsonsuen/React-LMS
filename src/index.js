@@ -8,11 +8,14 @@ import {
 } from 'react-router-dom';
 import './styles';
 import App from './App';
+import { Layout } from '../node_modules/antd';
 axios.defaults.baseURL = 'https://dawsonreactlms.azurewebsites.net/api';
 
 ReactDOM.render(
 	<Router>
+		
 		<App/>
+		
 	</Router>,
 	document.getElementById('root'),
 );

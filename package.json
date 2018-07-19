@@ -6,6 +6,7 @@
   "dependencies": {
     "@material-ui/core": "^1.2.1",
     "@material-ui/icons": "^1.1.0",
+    "antd": "^3.7.0",
     "bootstrap": "^3.3.7",
     "classnames": "^2.2.6",
     "gravatar-url": "^2.0.0",
