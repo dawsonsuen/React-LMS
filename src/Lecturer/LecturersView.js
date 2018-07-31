@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react';
 import LecturerCard from './LecturerCard';
 import {fetchLecturers} from '../api/lecturer';
 import { Link } from 'react-router-dom';
-import { Layout,Breadcrumb, Icon, Spin } from 'antd';
+import { Layout,Breadcrumb,Spin } from 'antd';
 
 export default class LecturersView extends React.Component {
     constructor(props) {
@@ -34,19 +34,18 @@ export default class LecturersView extends React.Component {
             <Spin />
             <Spin size="large" /></div>;
         return (
-            <Layout style={{ padding: '0 24px 24px'}}>
-        <Breadcrumb style={{ margin: '16px 0' }}>
-          <Breadcrumb.Item>Lecturer</Breadcrumb.Item>
-          <Link to = '/lecturers/edit/NEW' className='btn btn-sm btn-primary' style={{margin:'10px',color:'white'}}>
-                 Add new Lecturer
+            <Layout style={{ padding: '0 24px 24px'}} className='container'>
+                <Breadcrumb style={{ margin: '16px 0' }}>
+                    <Breadcrumb.Item>Lecturer</Breadcrumb.Item>
+                    <Link to = '/lecturers/edit/NEW' className='btn btn-sm btn-primary' style={{margin:'10px',color:'white'}}>
+                    Add new Lecturer
                     </Link>
-                    
-        </Breadcrumb>
+                </Breadcrumb>
         
-        <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
-        {this.state.lecturers.map(lecturer => <LecturerCard lecturer={lecturer} key={lecturer.Id}/>)}
-        </Content>
-      </Layout>
+                <div style={{ background: '#fff', padding: '0 0 0 0', margin: 'auto', minHeight: 350 }}>
+                    {this.state.lecturers.map(lecturer => <LecturerCard lecturer={lecturer} key={lecturer.Id}/>)}
+                </div>
+            </Layout>
         ) 
     }
 }    

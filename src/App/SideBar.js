@@ -8,7 +8,7 @@ export default class SideBar extends React.Component {
         const { Sider } = Layout;
 
         return (
-            <Sider width={200} style={{ background: '#fff' }}>
+            <Sider className='sidebar' width={198} style={{ background: '#fff' }}>
         <Menu
           mode="inline"
           defaultSelectedKeys={['1']}
@@ -16,9 +16,9 @@ export default class SideBar extends React.Component {
           style={{ height: '100%', borderRight: 0 }}
         >
           <SubMenu key="sub1" title={<span><Icon type="user" />User Profile</span>}>
-            <Menu.Item key="1">My Detail</Menu.Item>
-            <Menu.Item key="2">option2</Menu.Item>
-            <Menu.Item key="3">option3</Menu.Item>
+            <Menu.Item key="1"><Link to="/mydetail/:Id">My Detail</Link></Menu.Item>
+            <Menu.Item key="2"><Link to>Message</Link></Menu.Item>
+            <Menu.Item key="3"><a target='_blank' href="https://login.live.com/">My Email</a></Menu.Item>
             <Menu.Item key="4"><Link to="/signin">Sign in</Link></Menu.Item>
           </SubMenu>
           

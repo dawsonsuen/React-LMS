@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { fetchLecturerById } from '../api/lecturer';
+import { Layout} from 'antd';
 
 export default class LecturerDetailView extends Component {
     constructor(props){
@@ -23,36 +24,41 @@ export default class LecturerDetailView extends Component {
         
     }
     render(){
-        const {Name,Id,Payroll,Feedback} = this.state.lecturer;
+        const {Name,LecturerId,Payroll,Feedback} = this.state.lecturer;
         return (
-        <div className='coursedetail'>
-                    <table border='1' className="table-striped table-bordered">
+            <Layout style={{ padding: '0 24px 24px'}} className='container'>
+                    <table border='1' className="table table-bordered">
                     <tr>
                         <th>LecturerId</th>
-                        <th>Name</th>
+                        <td>{LecturerId}</td>
+
                     </tr>
-                    <tbody>
+                    
                     <tr>
-                        <td>{Id}</td>
+                        <th>Name</th>
+
                         <td>{Name}</td>
                     </tr>
-                    </tbody>
+                
                     <tr>
                         <th>Payroll</th>
-                        <th>Feedback</th>
-                    </tr>
-                    <tbody>
-                    <tr>
                         <td>{Payroll}</td>
+
+                    </tr>
+                    
+                    <tr>
+                        <th>Feedback</th>
+
                         <td>{Feedback}</td>
                     </tr>
-                    </tbody>
-                    {/* <tr>
-                        <th colSpan="2">Description</th>
+                    
+                    <tr>
+                        <th>Description</th>
+                    
+                        <td colSpan="2">Dr Leonards teaches Math.</td>
                     </tr>
-                    <td colSpan="2">Dr Leonards teaches Math.</td> */}
                     </table>
-                </div>
+            </Layout>
         
         )    
     }

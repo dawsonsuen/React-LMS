@@ -2,20 +2,19 @@ import axios from 'axios';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'typeface-roboto';
-
+import {browserHistory} from 'react-router';
 import {
-	BrowserRouter as Router,
+	HashRouter as Router,
 } from 'react-router-dom';
 import './styles';
 import App from './App';
-import { Layout } from '../node_modules/antd';
-axios.defaults.baseURL = 'https://dawsonreactlms.azurewebsites.net/api';
+axios.defaults.baseURL = 'https://dawsonlms.azurewebsites.net/api';
 
 ReactDOM.render(
-	<Router>
-		
+
+    <Router>
 		<App/>
-		
 	</Router>,
+
 	document.getElementById('root'),
 );

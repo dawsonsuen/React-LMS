@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { fetchStudentById } from '../api/student';
+import { Layout} from 'antd';
 
 export default class StudentDetailView extends Component {
     constructor(props){
@@ -22,36 +23,41 @@ export default class StudentDetailView extends Component {
         })
     }
     render(){
-        const {Name,CreditLimited,StudentFee,Id} = this.state.student;
+        const {Name,CreditLimited,StudentFee,StudentId} = this.state.student;
         return (
-        <div className='coursedetail'>
-                    <table border='1' className="table-striped table-bordered">
+            <Layout style={{ padding: '0 24px 24px'}} className='container'>
+                    <table border='1' className="table table-bordered">
                     <tr>
-                        <th>Student Id</th>
-                        <th>Student Name</th>
+                        <th>StudentId</th>
+                        <td>{StudentId}</td>
+
                     </tr>
-                    <tbody>
+                    
                     <tr>
-                        <td>{Id}</td>
+                        <th>Name</th>
+
                         <td>{Name}</td>
                     </tr>
-                    </tbody>
+                    
                     <tr>
                         <th>CreditLimited</th>
-                        <th>Student Fee</th>
-                    </tr>
-                    <tbody>
-                    <tr>
                         <td>{CreditLimited}</td>
+
+                    </tr>
+                    
+                    <tr>
+                        <th>Student Fee</th>
+
                         <td>{StudentFee}</td>
                     </tr>
-                    </tbody>
-                    {/* <tr>
-                        <th colSpan="2">Description</th>
+                    
+                    <tr>
+                        <th>Description</th>
+                        <td>Leo is a freshman.</td>
+
                     </tr>
-                    <td colSpan="2">Math is science.</td> */}
                     </table>
-        </div>
+            </Layout>
         
         )    
     }

@@ -12,6 +12,10 @@ export function saveLecturer(data) {
     return axios.post('/lecturer',data);
 }
 
-export function undateLecturer(Id,data) {
+export function updateLecturer(Id,data) {
     return axios.put(`/lecturer/${Id}`, data);
+}
+
+export function deleteLecturer(Id) {
+    return axios.delete(`/lecturer/${Id}`);
 }

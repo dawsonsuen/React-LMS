@@ -12,7 +12,7 @@ export function saveCourse(data) {
     return axios.post('/course',data);
 }
 
-export function undateCourse(Id,data) {
+export function updateCourse(Id,data) {
     return axios.put(`/course/${Id}`, data);
 }
 

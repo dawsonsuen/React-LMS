@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
-import { fetchLecturerById, saveLecturer, undateLecturer } from '../api/lecturer';
-import Button, {LoadingButton} from '../UI/Button';
+import { fetchLecturerById, saveLecturer, updateLecturer } from '../api/lecturer';
+import Button from '../UI/Button';
+import { Layout } from 'antd';
+
 export default class LecturerEditView extends Component {
     constructor(props){
         super(props);
@@ -37,7 +39,7 @@ export default class LecturerEditView extends Component {
                 this.setState({lecturer: response.data});
             })
         } else {
-            undateLecturer(Id,data)
+            updateLecturer(Id,data)
             .then(response => {
                 this.setState({lecturer:response.data});
             })
@@ -78,40 +80,47 @@ render() {
 
     });
         return (
+        <Layout style={{ padding: '0 24px 24px'}} className='container'>
+
+            <form onSubmit={this.handleSubmit}>
             
-            <form className='courseedit' onSubmit={this.handleSubmit}>
-            
-                <table border='1' className="table-striped table-bordered">
+                <table border='1' className="table table-bordered">
                 <tr>
                     <th>LecturerId</th>
-                    <th>Name</th>
+                    <td><input {...inputProps('LecturerId','LecturerId')}/></td>
+
                 </tr>
-                <tbody>
+                
                 <tr>
-                    <td><input {...inputProps('Id','Id')}/>
-                    </td>
+                    <th>Name</th>
+
                     <td><input {...inputProps('Name','Name')}/></td>
                 </tr>
-                </tbody>
+                
                 <tr>
                     <th>Payroll</th>
-                    <th>Feedback</th>
-                </tr>
-                <tbody>
-                <tr>
+
                     <td><input {...inputProps('Payroll','Payroll')}/></td>
+
+                </tr>
+                
+                <tr>
+                    <th>Feedback</th>
+
                     <td><input {...inputProps('Feedback','Feedback')}/></td>
                 </tr>
-                </tbody>
+                
                 {/* <tr>
-                    <th colSpan="2">Description</th>
-                </tr>
-                <td colSpan="2">Math is science.</td> */}
+                    <th>Description</th>
+                    <td>Math is science.</td>
+
+                </tr> */}
                 </table>
-                <Button>Save</Button> 
+                <Button className='save'>Save</Button> 
                 
             
             </form>
+        </Layout>
         )
     }
 }

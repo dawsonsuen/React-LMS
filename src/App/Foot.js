@@ -1,0 +1,32 @@
+import React from 'react';
+import { Layout, Icon, Menu} from 'antd';
+
+export default class Foot extends React.Component {
+    render() {
+        const { Footer } = Layout;
+
+        return (
+            <Footer className='footer'>
+                    <div className='span3'>
+                        <h4>HELP AND SUPPORT</h4>
+                        <p>For users experiencing difficulties using LMS, please contact technital support.</p>
+                        
+                        Administrator: <span style={{color:'#1890ff'}}>Dawson Sun</span>
+                        <br></br>
+
+                        Email: <a href="mailto:sdc880123@gmail.com">sdc880123@gmail.com</a>
+                        <br></br>
+                        Phone: <span style={{color:'#1890ff'}}>0451193278</span>
+                    </div>
+                    <div className='span4'>
+                        <h4>QUICK LINKS</h4>
+                        
+                            
+                                <a href='https://jiangren.com.au/service'>JR Academy</a>
+                            
+                        
+                    </div>
+                </Footer>
+        )
+    }
+}

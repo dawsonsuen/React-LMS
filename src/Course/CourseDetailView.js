@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { fetchCourseById } from '../api/course';
+import { Layout} from 'antd';
 
 export default class CourseDetailView extends Component {
     constructor(props){
@@ -25,34 +26,36 @@ export default class CourseDetailView extends Component {
         
         const {Name, CourseCode, Credit, MaxNumber} = this.state.course;
         return (
-        <div className='coursedetail'>
-                    <table border='1' className="table-striped table-bordered">
+            <Layout style={{ padding: '0 24px 24px'}} className='container'>
+                    <table border='1' className="table table-bordered">
                     <tr>
                         <th>Course Code</th>
-                        <th>Course Name</th>
+                        <td>{CourseCode}</td>                    
                     </tr>
-                    <tbody>
+                    
                     <tr>
-                        <td>{CourseCode}</td>
+                    <th>Course Name</th>
+
                         <td>{Name}</td>
                     </tr>
-                    </tbody>
                     <tr>
                         <th>Credit</th>
-                        <th>Max Number</th>
-                    </tr>
-                    <tbody>
-                    <tr>
                         <td>{Credit}</td>
+
+                    </tr>
+                    
+                    <tr>
+                    <th>Max Number</th>
+
                         <td>{MaxNumber}</td>
                     </tr>
-                    </tbody>
-                    {/* <tr>
-                        <th colSpan="2">Description</th>
+                    
+                    <tr>
+                        <th>Description</th>
+                        <td>Introduction to computers and associated systems.</td>
                     </tr>
-                    <td colSpan="2">Math is science.</td> */}
                     </table>
-        </div>
+        </Layout>
         
         )    
     }

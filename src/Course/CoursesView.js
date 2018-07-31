@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react';
 import CourseCard from './CourseCard';
 import {fetchCourses} from '../api/course';
 import { Link } from 'react-router-dom';
-import { Layout,Breadcrumb, Icon,Spin } from 'antd';
+import { Layout,Breadcrumb,Spin } from 'antd';
 
 export default class CoursesView extends React.Component {
     constructor(props) {
@@ -36,13 +36,12 @@ export default class CoursesView extends React.Component {
         const {isLoading} = this.state; 
         if (isLoading)
 
-            // return (<div className='loading'>Loading course</div>)
-    return (<div><Spin size="small" />
-    <Spin />
-    <Spin size="large" /></div>)
+            return (<div><Spin size="small" />
+            <Spin />
+            <Spin size="large" /></div>)
 
         return (
-            <Layout style={{ padding: '0 24px 24px'}}>
+            <Layout style={{ padding: '0 24px 24px'}} className='container'>
                 <Breadcrumb style={{ margin: '16px 0' }}>
                     <Breadcrumb.Item>Course</Breadcrumb.Item>
                     <Link to = '/courses/edit/NEW' className='btn btn-sm btn-primary' style={{margin:'10px',color:'white'}}>
@@ -51,9 +50,9 @@ export default class CoursesView extends React.Component {
                     
                 </Breadcrumb>
         
-                <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
+                <div style={{ background: '#fff', padding: '0 0 0 0', margin: 'auto', minHeight: 350 }}>
                     {this.state.courses.map(course => <CourseCard course={course} key={course.Id}/>)}
-                </Content>
+                </div>
             </Layout>
         ) 
     }

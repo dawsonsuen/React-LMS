@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
-import { fetchCourseById, saveCourse, undateCourse } from '../api/course';
-import Button, {LoadingButton} from '../UI/Button';
+import { fetchCourseById, saveCourse, updateCourse } from '../api/course';
+import Button from '../UI/Button.js';
+import { Layout } from 'antd';
+
 export default class CourseEditView extends Component {
     constructor(props){
         super(props);
@@ -40,7 +42,7 @@ export default class CourseEditView extends Component {
                 this.setState({course: response.data});
             })
         } else {
-            undateCourse(Id,data)
+            updateCourse(Id,data)
             .then(response => {
                 this.setState({course:response.data});
             })
@@ -79,40 +81,43 @@ export default class CourseEditView extends Component {
             onChange: this.handleInputChange.bind(this),
 
         });
-            return (
-                <form className='courseedit' onSubmit={this.handleSubmit}>
+            return (            
+            <Layout style={{ padding: '0 24px 24px'}} className='container'>
+
+                <form onSubmit={this.handleSubmit}>
                 
-                    <table border='1' className="table-striped table-bordered">
+                    <table border='1' className="table table-bordered">
                     <tr>
                         <th>Course Code</th>
-                        <th>Course Name</th>
+                        <td><input {...inputProps('CourseCode','CourseCode')}/></td>
+
                     </tr>
-                    <tbody>
+                    
                     <tr>
-                        <td><input {...inputProps('CourseCode','CourseCode')}/>
-                        </td>
+                        
+                        <th>Course Name</th>
+
                         <td><input {...inputProps('Name','Name')}/></td>
                     </tr>
-                    </tbody>
+                    
                     <tr>
                         <th>Credit</th>
-                        <th>Max Number</th>
-                    </tr>
-                    <tbody>
-                    <tr>
                         <td><input {...inputProps('Credit','Credit')}/></td>
+
+                    </tr>
+                    
+                    <tr>
+                    <th>Max Number</th>
+
                         <td><input {...inputProps('MaxNumber','MaxNumber')}/></td>
                     </tr>
-                    </tbody>
-                    {/* <tr>
-                        <th colSpan="2">Description</th>
-                    </tr>
-                    <td colSpan="2">Math is science.</td> */}
+                    
+                    
                     </table>
-                    <Button>Save</Button>
+                    <Button className='save'>Save</Button>
                 
                 </form>
-               
+               </Layout>
             )
             
          

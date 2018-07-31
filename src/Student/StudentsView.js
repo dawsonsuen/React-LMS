@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import StudentCard from './StudentCard';
 import {fetchStudents} from '../api/student';
 import { Link } from 'react-router-dom';
@@ -34,7 +34,7 @@ export default class StudentsView extends React.Component {
             <Spin />
             <Spin size="large" /></div>;
         return (
-            <Layout style={{ padding: '0 24px 24px'}}>
+            <Layout style={{ padding: '0 24px 24px'}} className='container'>
                 <Breadcrumb style={{ margin: '16px 0' }}>
                     <Breadcrumb.Item>Student</Breadcrumb.Item>
                     <Link to = '/students/edit/NEW' className='btn btn-sm btn-primary' style={{margin:'10px',color:'white'}}>
@@ -43,7 +43,7 @@ export default class StudentsView extends React.Component {
                     
                 </Breadcrumb>
         
-                <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
+                <Content style={{ background: '#fff', padding: '0 0 0 0', margin: 0, minHeight: 350 }}>
                     {this.state.students.map(student => <StudentCard student={student} key={student.Id}/>)}
                 </Content>
             </Layout>
