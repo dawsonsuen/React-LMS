@@ -26,9 +26,9 @@ export default class TopNav extends React.Component {
         <Menu.Item key="2"><Link to="/courses">Course</Link></Menu.Item>
         <Menu.Item key="3"><Link to="/students">Student</Link></Menu.Item>
         <Menu.Item key="4"><Link to="/lecturers">Lecturer</Link></Menu.Item>
-
       </Menu>
-      
+
+
 </Header>
 
 

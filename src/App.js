@@ -4,6 +4,7 @@ import Routes from './App/Routes';
 import SideBar from './App/SideBar';
 import TopNav from './App/TopNav';
 import Foot from './App/Foot';
+
 export default function App() {
 	const { Header, Footer, Sider, Content } = Layout;
 
@@ -11,8 +12,8 @@ export default function App() {
 
 		<Layout>
 				<TopNav/>
-				
 					<Routes/>
+				
 				<Foot/>
 		</Layout>
 	);

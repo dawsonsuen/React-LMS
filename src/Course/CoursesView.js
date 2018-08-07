@@ -3,7 +3,7 @@ import CourseCard from './CourseCard';
 import {fetchCourses} from '../api/course';
 import { Link } from 'react-router-dom';
 import { Layout,Breadcrumb,Spin } from 'antd';
-
+import SideBar from '../App/SideBar'
 export default class CoursesView extends React.Component {
     constructor(props) {
         super(props);
@@ -41,7 +41,11 @@ export default class CoursesView extends React.Component {
             <Spin size="large" /></div>)
 
         return (
-            <Layout style={{ padding: '0 24px 24px'}} className='container'>
+        <Layout >
+            <SideBar/>
+            <Content>
+            <Layout style={{ padding: '0 24px 24px'}}>
+
                 <Breadcrumb style={{ margin: '16px 0' }}>
                     <Breadcrumb.Item>Course</Breadcrumb.Item>
                     <Link to = '/courses/edit/NEW' className='btn btn-sm btn-primary' style={{margin:'10px',color:'white'}}>
@@ -50,10 +54,12 @@ export default class CoursesView extends React.Component {
                     
                 </Breadcrumb>
         
-                <div style={{ background: '#fff', padding: '0 0 0 0', margin: 'auto', minHeight: 350 }}>
+                <div style={{ background: '', padding: '0 0 0 0', margin: 'auto', minHeight: 350 }}>
                     {this.state.courses.map(course => <CourseCard course={course} key={course.Id}/>)}
                 </div>
             </Layout>
+            </Content>
+        </Layout>
         ) 
     }
 }    

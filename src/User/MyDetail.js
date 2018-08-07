@@ -1,6 +1,5 @@
 import React from 'react';
 import { fetchProfiles,fetchProfileById } from '../api/profile';
-import { Layout } from '../../node_modules/antd';
 
 export default class MyDetail extends React.Component {
 

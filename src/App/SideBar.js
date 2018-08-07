@@ -1,7 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Profile from '../User/Profile';
+import { Link, withRouter } from 'react-router-dom';
 import { Layout, Menu, Icon } from 'antd';
+import {fakeAuth} from '../User/SigninView';
+
 const { SubMenu } = Menu;
+const AuthButton = withRouter(({ history }) => (
+  fakeAuth.isAuthenticated ? (
+    <p>
+      <a onClick={() => { if (window.confirm('Are you sure you wish to sign out?'))
+        fakeAuth.signout(() => history.push('/'))
+      }}>Sign out</a>
+    </p>
+  ) : (
+    <p>You are not logged in.</p>
+  )
+))
 
 export default class SideBar extends React.Component {
     render(){
@@ -16,10 +30,9 @@ export default class SideBar extends React.Component {
           style={{ height: '100%', borderRight: 0 }}
         >
           <SubMenu key="sub1" title={<span><Icon type="user" />User Profile</span>}>
-            <Menu.Item key="1"><Link to="/mydetail/:Id">My Detail</Link></Menu.Item>
-            <Menu.Item key="2"><Link to>Message</Link></Menu.Item>
-            <Menu.Item key="3"><a target='_blank' href="https://login.live.com/">My Email</a></Menu.Item>
-            <Menu.Item key="4"><Link to="/signin">Sign in</Link></Menu.Item>
+            <Menu.Item key="1"><Profile/></Menu.Item>
+            <Menu.Item key="2"><a style={{color:'#1890ff'}} target='_blank' href="https://login.live.com/">My Email</a></Menu.Item>
+            <Menu.Item key="3"><AuthButton /></Menu.Item>
           </SubMenu>
           
         </Menu>

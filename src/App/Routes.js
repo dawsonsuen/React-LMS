@@ -14,6 +14,7 @@ import SigninView from'../User/SigninView';
 import Register from '../User/Register';
 import {fakeAuth} from '../User/SigninView';
 import { Layout } from 'antd';
+import Profile from '../User/Profile';
 const { Content } = Layout;
 
 export default () =>(
@@ -34,6 +35,7 @@ export default () =>(
         <Route exact path="/mydetail/:Id" component={MyDetail}/>
         <Route exact path="/signin" component={SigninView}/>
         <Route exact path="/register" component={Register}/>
+        <ProtectedRoute exact path="/profile" component={Profile}/>
     </Content>
 );
 const ProtectedRoute = ({component:ProtectedComponent, ...rest})=>(
