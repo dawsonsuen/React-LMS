@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
-import { fetchCourseById } from '../api/course';
+import { fetchJobById } from '../api/job';
 import { Layout} from 'antd';
 
-export default class CourseDetailView extends Component {
+export default class JobDetailView extends Component {
     constructor(props){
         super(props);
         this.state={
             isLoading: false,
             error: null,
-            course: {}
+            job: {}
         };
 
     }
@@ -17,24 +17,24 @@ export default class CourseDetailView extends Component {
 
         const {Id} = this.props.match.params;
         this.setState({isLoading: true});
-        fetchCourseById(Id)
+        fetchJobById(Id)
         .then(response => {
-            this.setState({course: response.data});
+            this.setState({job: response.data});
         })
     }
     render(){
         
-        const {Name, CourseCode, Credit, MaxNumber} = this.state.course;
+        const {Name, jobNumber, Credit, MaxNumber} = this.state.job;
         return (
             <Layout style={{ padding: '0 24px 24px'}} className='container'>
                     <table border='1' className="table table-bordered">
                     <tr>
-                        <th>Course Code</th>
-                        <td>{CourseCode}</td>                    
+                        <th>Job Number</th>
+                        <td>{jobNumber}</td>                    
                     </tr>
                     
                     <tr>
-                    <th>Course Name</th>
+                    <th>Job Name</th>
 
                         <td>{Name}</td>
                     </tr>

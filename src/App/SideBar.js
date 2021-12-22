@@ -1,6 +1,6 @@
 import React from 'react';
 import Profile from '../User/Profile';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { Layout, Menu, Icon } from 'antd';
 import {fakeAuth} from '../User/SigninView';
 
@@ -31,7 +31,7 @@ export default class SideBar extends React.Component {
         >
           <SubMenu key="sub1" title={<span><Icon type="user" />User Profile</span>}>
             <Menu.Item key="1"><Profile/></Menu.Item>
-            <Menu.Item key="2"><a style={{color:'#1890ff'}} target='_blank' href="https://login.live.com/">My Email</a></Menu.Item>
+            <Menu.Item key="2"><a style={{color:'#1890ff'}} href="https://login.live.com/">My Email</a></Menu.Item>
             <Menu.Item key="3"><AuthButton /></Menu.Item>
           </SubMenu>
           

@@ -1,11 +1,10 @@
-import React from 'react';
-import { Drawer, List, Avatar, Divider, Col, Row } from 'antd';
-import { fetchProfiles,fetchProfileById } from '../api/profile';
+import React from "react";
+import { Drawer, List, Divider, Col, Row } from "antd";
 
 const pStyle = {
   fontSize: 16,
-  lineHeight: '24px',
-  display: 'block',
+  lineHeight: "24px",
+  display: "block",
   marginBottom: 16,
 };
 
@@ -14,16 +13,16 @@ const DescriptionItem = ({ title, content }) => {
     <div
       style={{
         fontSize: 14,
-        lineHeight: '22px',
+        lineHeight: "22px",
         marginBottom: 7,
-        color: 'rgba(0,0,0,0.65)',
+        color: "rgba(0,0,0,0.65)",
       }}
     >
       <p
         style={{
           marginRight: 8,
-          display: 'inline-block',
-          color: 'rgba(0,0,0,0.85)',
+          display: "inline-block",
+          color: "rgba(0,0,0,0.85)",
         }}
       >
         {title}:
@@ -34,26 +33,22 @@ const DescriptionItem = ({ title, content }) => {
 };
 
 class Profile extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
 
-    this.state={
-        // isLoading: false,
-        // error: null,
-        profile: {}
-
+    this.state = {
+      // isLoading: false,
+      // error: null,
+      profile: {},
     };
-}
-componentDidMount(){
-        
+  }
+  // componentDidMount() {
+  //   // const {Id} = this.props.match.params;
 
-  // const {Id} = this.props.match.params;
-
-  fetchProfileById(1)
-  .then(response => {
-      this.setState({profile: response.data});
-  })
-}
+  //   fetchProfileById(1).then((response) => {
+  //     this.setState({ profile: response.data });
+  //   });
+  // }
   state = { visible: false };
 
   showDrawer = () => {
@@ -69,28 +64,23 @@ componentDidMount(){
   };
 
   render() {
-    const {Name,UserId,PhoneNumber,EmailAddress} = this.state.profile;
+    const { Name, UserId, PhoneNumber, EmailAddress, City, State } =
+      this.state.profile;
 
     return (
-      <div className='profile'>
+      <div className="profile">
         <List
           dataSource={[
             {
-              name: {Name},
+              name: { Name },
             },
-            
           ]}
-        //   bordered
-          renderItem={item => (
-            <List.Item key={item.id} actions={[<a onClick={this.showDrawer}>View Profile</a>]}>
-              {/* <List.Item.Meta
-                avatar={
-                  <Avatar src="https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png" />
-                }
-                title={<a href="https://ant.design/index-cn">{item.name}</a>}
-                // description="Progresser AFX"
-              /> */}
-            </List.Item>
+          //   bordered
+          renderItem={(item) => (
+            <List.Item
+              key={item.id}
+              actions={[<a onClick={this.showDrawer}>View Profile</a>]}
+            />
           )}
         />
         <Drawer
@@ -104,7 +94,7 @@ componentDidMount(){
           <p style={pStyle}>Personal</p>
           <Row>
             <Col span={12}>
-              <DescriptionItem title="Full Name" content={Name} />{' '}
+              <DescriptionItem title="Full Name" content={Name} />{" "}
             </Col>
             <Col span={12}>
               <DescriptionItem title="User ID" content={UserId} />
@@ -112,56 +102,14 @@ componentDidMount(){
           </Row>
           <Row>
             <Col span={12}>
-              <DescriptionItem title="City" content="Melbourne" />
+              <DescriptionItem title="City" content={City} />
             </Col>
             <Col span={12}>
-              <DescriptionItem title="State" content="Victoria" />
+              <DescriptionItem title="State" content={State} />
             </Col>
           </Row>
-          {/* <Row>
-            <Col span={12}>
-              <DescriptionItem title="Birthday" content="February 2,1900" />
-            </Col>
-            <Col span={12}>
-              <DescriptionItem title="Website" content="-" />
-            </Col>
-          </Row> */}
-          {/* <Row>
-            <Col span={24}>
-              <DescriptionItem
-                title="Message"
-                content="Make things as simple as possible but no simpler."
-              />
-            </Col>
-          </Row>
+      
           <Divider />
-          <p style={pStyle}>Company</p>
-          <Row>
-            <Col span={12}>
-              <DescriptionItem title="Position" content="Programmer" />
-            </Col>
-            <Col span={12}>
-              <DescriptionItem title="Responsibilities" content="Coding" />
-            </Col>
-          </Row>
-          <Row>
-            <Col span={12}>
-              <DescriptionItem title="Department" content="AFX" />
-            </Col>
-            <Col span={12}>
-              <DescriptionItem title="Supervisor" content={<a>Lin</a>} />
-            </Col>
-          </Row>
-          <Row>
-            <Col span={24}>
-              <DescriptionItem
-                title="Skills"
-                content="C / C + +, data structures, software engineering, operating systems, computer networks, databases, compiler theory, computer architecture, Microcomputer Principle and Interface Technology, Computer English, Java, ASP, etc."
-              />
-            </Col>
-          </Row>
-          <Divider /> */}
-          <Divider/>
           <p style={pStyle}>Contacts</p>
           <Row>
             <Col span={12}>
@@ -171,23 +119,10 @@ componentDidMount(){
               <DescriptionItem title="Phone Number" content={PhoneNumber} />
             </Col>
           </Row>
-          {/* <Row>
-            <Col span={24}>
-              <DescriptionItem
-                title="Github"
-                content={(
-                  <a href="http://github.com/ant-design/ant-design/">
-                    github.com/ant-design/ant-design/
-                  </a>
-                )}
-              />
-            </Col>
-          </Row> */}
         </Drawer>
       </div>
     );
   }
 }
-
 
 export default Profile;

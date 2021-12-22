@@ -1,5 +1,5 @@
 import React from 'react';
-import { fetchProfiles,fetchProfileById } from '../api/profile';
+import { fetchProfileById } from '../api/profile';
 
 export default class MyDetail extends React.Component {
 
