@@ -42,6 +42,5 @@
       "react-app",
       "react-app/jest"
     ]
-  },
-  "proxy": "http://dawsonreactlms.azurewebsites.net/"
+  }
 }
